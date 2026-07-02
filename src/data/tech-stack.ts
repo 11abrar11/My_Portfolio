@@ -54,14 +54,14 @@ export const TECH_STACK: TechSkill[] = [
     category: "Large Language Model",
     description: "Leveraging GPT-4 and GPT-4o for nuanced conversational agents and zero-shot reasoning capabilities.",
     accentColor: "rgba(16, 163, 127, 0.5)",
-    logoUrl: "https://cdn.simpleicons.org/openai/white",
+    logoUrl: "https://api.iconify.design/simple-icons:openai.svg?color=white",
   },
   {
     name: "Whisper STT",
     category: "Audio Intelligence",
     description: "State-of-the-art automatic speech recognition for transcribing real-time inbound audio streams.",
     accentColor: "rgba(255, 255, 255, 0.3)",
-    logoUrl: "https://cdn.simpleicons.org/openai/white",
+    logoUrl: "https://api.iconify.design/simple-icons:openai.svg?color=white",
   },
   {
     name: "Kokoro TTS",
@@ -138,6 +138,6 @@ export const TECH_STACK: TechSkill[] = [
     category: "Agentic Engineering",
     description: "Powered by advanced agentic AI coding assistants for ultra-rapid prototyping and complex architectural orchestration.",
     accentColor: "rgba(66, 133, 244, 0.5)",
-    logoUrl: "https://cdn.simpleicons.org/google/white",
+    logoUrl: "https://cdn.simpleicons.org/deepmind/FFFFFF",
   }
 ];
