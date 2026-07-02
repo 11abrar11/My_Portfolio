@@ -1,0 +1,379 @@
+/* =============================================================
+   PROJECTS SECTION — Physical Card Stack (Placing on a Table)
+   ============================================================= */
+
+/* ─── Section Shell ─────────────────────────────────────────── */
+.projects-section {
+  position: relative;
+  background-color: #f5f3e9;
+}
+
+/* Creamy / yellowish ivory background wrapper */
+.projects-bg {
+  position: absolute; /* Changed from fixed since it's just the background */
+  inset: 0;
+  background-color: #f5f3e9; /* Creamy yellowish off-white */
+  z-index: 0;
+}
+
+/* Base static grid (checks) */
+.projects-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center top;
+}
+
+/* Animated shining grid lines */
+.projects-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(218, 165, 32, 0.25) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(218, 165, 32, 0.25) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center top;
+  
+  -webkit-mask-image: linear-gradient(
+    135deg,
+    transparent 35%,
+    rgba(0, 0, 0, 1) 50%,
+    transparent 65%
+  );
+  mask-image: linear-gradient(
+    135deg,
+    transparent 35%,
+    rgba(0, 0, 0, 1) 50%,
+    transparent 65%
+  );
+  -webkit-mask-size: 300% 300%;
+  mask-size: 300% 300%;
+  animation: gridShine 10s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gridShine {
+  0% { mask-position: 150% -50%; -webkit-mask-position: 150% -50%; }
+  100% { mask-position: -50% 150%; -webkit-mask-position: -50% 150%; }
+}
+
+/* ─── Sticky Viewport ───────────────────────────────────────── */
+.projects-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* ─── Section Header ────────────────────────────────────────── */
+.projects-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 5vh 6%;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.projects-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.35);
+  font-family: var(--font-space-grotesk), sans-serif;
+  margin-bottom: 0.6rem;
+}
+
+.projects-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: #1c1a17;
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+/* ─── Card Stack Container ──────────────────────────────────── */
+.project-cards-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; 
+}
+
+/* ─── Individual Card Wrapper ───────────────────────────────── */
+.project-card-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  
+  width: 90%;
+  max-width: 900px; /* Reduced further per user request */
+  
+  will-change: transform;
+  pointer-events: all;
+  border-radius: 24px;
+  bottom: 4vh; /* Lifted off the bottom to show curved edges */
+}
+
+/* ─── Premium Card Surface ──────────────────────────────────── */
+.project-card {
+  width: 100%;
+  height: 65vh; /* Reduced height */
+  max-height: 520px; /* Reduced max height */
+  min-height: 480px;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  color: white;
+
+  background-color: #0d0d0f;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -5%, rgba(255,255,255,0.08) 0%, transparent 100%),
+    linear-gradient(110deg, rgba(255,255,255,0.035) 0%, transparent 30%, rgba(0,0,0,0.7) 100%);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 -6px 30px rgba(0,0,0,0.15),
+    0 -30px 80px rgba(0,0,0,0.12),
+    inset 0 1px 0px rgba(255,255,255,0.16),
+    inset 1px 0 1px rgba(255,255,255,0.04),
+    inset -1px 0 1px rgba(255,255,255,0.04);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(59,130,246,0.6), transparent);
+  box-shadow: 0 0 28px rgba(59,130,246,0.2);
+  z-index: 3;
+}
+
+.project-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Crect width='4' height='4' fill='rgba(255,255,255,0.012)'/%3E%3Crect x='4' y='4' width='4' height='4' fill='rgba(255,255,255,0.012)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ─── Card Interior Layout ──────────────────────────────────── */
+.project-card-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 2.5rem 3rem; 
+  gap: 1rem;
+}
+
+/* Header Row */
+.project-card-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.project-category {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: linear-gradient(110deg, #b8942a, #edd87a, #c9a94e);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-card-title {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: rgba(255,255,255,0.95);
+}
+
+/* Middle Row */
+.project-card-body {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.project-desc-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.project-desc {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: rgba(255,255,255,0.65);
+}
+
+.project-highlights {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.project-highlight-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+}
+
+.project-highlight-label {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  min-width: 90px;
+  flex-shrink: 0;
+}
+
+.project-highlight-detail {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.72);
+}
+
+/* Architecture Preview */
+.project-arch-preview {
+  height: 100%;
+  min-height: 140px;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 1rem;
+}
+
+.arch-node {
+  width: 75%;
+  height: 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.arch-node-label {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.55rem;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.38);
+  text-transform: uppercase;
+}
+
+.arch-connector {
+  width: 1px;
+  height: 12px;
+  background: linear-gradient(to bottom, rgba(59,130,246,0.35), transparent);
+  flex-shrink: 0;
+}
+
+/* Footer Row */
+.project-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  margin-top: auto;
+}
+
+.project-tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.project-tech-pill {
+  padding: 0.2rem 0.6rem;
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 4px;
+}
+
+.project-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: white;
+  color: #0c0c0f;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+
+.project-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(255,255,255,0.15);
+}
+
+/* ─── Responsive ────────────────────────────────────────────── */
+@media (max-width: 1100px) {
+  .project-card-wrap { width: 96%; }
+  .project-card-inner { padding: 2rem; }
+  .project-card-body { grid-template-columns: 1fr; gap: 1.5rem; }
+  .project-arch-preview { min-height: 120px; }
+}
+
+@media (max-width: 768px) {
+  .project-card-wrap { width: 100%; max-width: 100%; border-radius: 16px; bottom: 2vh; }
+  .project-card { border-radius: 16px; }
+  .project-card-inner { padding: 1.5rem; gap: 1.25rem; }
+  .project-card-title { font-size: 1.4rem; }
+  .project-desc { font-size: 0.85rem; }
+  .project-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+}

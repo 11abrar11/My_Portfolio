@@ -1,0 +1,478 @@
+/* =============================================================
+   AI INTERVIEW SECTION — Premium ChatGPT-style Interface
+   Background: off-white / light contrast vs dark hero
+   ============================================================= */
+
+
+/* ======================
+   SECTION SHELL
+   ====================== */
+
+.interview-section {
+  position: relative;
+  /* height is controlled inline by React */
+  background: #f7f7f5;
+  display: block; /* Removed flex so sticky works correctly from the top */
+}
+
+.interview-inner {
+  width: 100%;
+  max-width: 1100px; /* Wider to support 2 columns */
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .interview-inner {
+    display: grid;
+    grid-template-columns: 32% 1fr;
+    gap: 5rem;
+    align-items: center; /* Vertically center the header against the chat */
+  }
+}
+
+
+/* ======================
+   SECTION HEADER
+   ====================== */
+
+.interview-header {
+  flex-shrink: 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align top */
+  padding-top: 1rem; /* optical alignment with chat top */
+}
+
+@media (min-width: 1024px) {
+  .interview-header {
+    text-align: left;
+    align-items: flex-start;
+  }
+}
+
+.interview-label {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.35);
+  font-family: var(--font-space-grotesk), sans-serif;
+  margin-bottom: 1rem;
+}
+
+.interview-heading {
+  font-size: clamp(2.5rem, 6vw, 4rem); /* Slightly larger */
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: #0c0c0f;
+  font-family: var(--font-space-grotesk), sans-serif;
+  margin-bottom: 1.25rem;
+}
+
+.interview-heading-accent {
+  /* Subtle blue tint — not electric, just distinguished */
+  background: linear-gradient(120deg, #1a3a8f, #2563eb);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.interview-subheading {
+  font-size: 1.05rem;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.75; /* Increased line-height */
+  max-width: 420px; /* Reduced width */
+  margin: 0 auto;
+  font-family: var(--font-manrope), sans-serif;
+}
+
+@media (min-width: 1024px) {
+  .interview-subheading {
+    margin: 0; /* Reset auto margin for left alignment */
+  }
+}
+
+
+/* ======================
+   CHAT WINDOW
+   ====================== */
+
+.interview-chat-window {
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow:
+    0 4px 24px rgba(0, 0, 0, 0.03),
+    0 12px 48px rgba(0, 0, 0, 0.05),
+    0 24px 80px rgba(0, 0, 0, 0.04);
+}
+
+
+/* Window chrome bar (Premium Header) */
+.interview-chrome {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(8px);
+}
+
+.interview-chrome-title {
+  flex: 1;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  font-family: var(--font-space-grotesk), sans-serif;
+  letter-spacing: -0.01em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.interview-chrome-subtitle {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+/* Green status dot */
+.interview-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px rgba(34, 197, 94, 0.5);
+  animation: interview-pulse-dot 2.4s ease-in-out infinite;
+}
+
+
+/* ======================
+   MESSAGE LIST
+   ====================== */
+
+.interview-messages {
+  flex: 1;
+  padding: 1.5rem 1.5rem 0.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  scroll-behavior: smooth;
+  /* Premium scrollbar for Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.15) transparent;
+}
+
+/* Premium scrollbar for WebKit (Chrome, Safari, Edge) */
+.interview-messages::-webkit-scrollbar {
+  width: 5px;
+}
+
+.interview-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.interview-messages::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.interview-messages::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+
+/* ======================
+   AVATAR
+   ====================== */
+
+.interview-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.interview-avatar-user {
+  background: linear-gradient(135deg, #292929, #555);
+}
+
+
+/* ======================
+   MESSAGE BUBBLES
+   ====================== */
+
+.interview-bubble {
+  padding: 0.9rem 1.25rem;
+  border-radius: 18px;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  font-family: var(--font-manrope), sans-serif;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.interview-bubble-assistant {
+  background: #f4f4f2;
+  color: #1a1a1a;
+  border-radius: 4px 18px 18px 18px;
+}
+
+.interview-bubble-user {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: rgba(255, 255, 255, 0.98);
+  border-radius: 18px 4px 18px 18px;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+.interview-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.interview-content strong {
+  font-weight: 600;
+  color: inherit;
+}
+
+/* Blinking cursor */
+.interview-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: #2563eb;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: interview-cursor-blink 0.9s step-end infinite;
+}
+
+
+/* ======================
+   THINKING INDICATOR
+   ====================== */
+
+.interview-thinking {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0.2rem 0.1rem;
+}
+
+.interview-thinking span {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.22);
+  animation: interview-thinking-dot 1.4s ease-in-out infinite;
+}
+
+.interview-thinking span:nth-child(2) { animation-delay: 0.15s; }
+.interview-thinking span:nth-child(3) { animation-delay: 0.30s; }
+
+
+/* ======================
+   SKELETON LOADERS
+   ====================== */
+
+.interview-skeleton-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0.5rem 0;
+}
+
+.interview-skeleton {
+  height: 14px;
+  border-radius: 8px;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.06) 0%,
+    rgba(0, 0, 0, 0.10) 50%,
+    rgba(0, 0, 0, 0.06) 100%
+  );
+  background-size: 200% 100%;
+  animation: interview-shimmer 1.6s ease-in-out infinite;
+}
+
+.skeleton-short  { width: 35%; }
+.skeleton-long   { width: 85%; }
+.skeleton-medium { width: 60%; }
+
+
+/* ======================
+   SUGGESTED PROMPTS
+   ====================== */
+
+.interview-prompts {
+  flex-shrink: 0;
+  padding: 0 1.5rem 0.5rem; /* Tighter padding, no border */
+}
+
+.interview-prompts-wrap {
+  /* handled by the SuggestedPrompts component */
+}
+
+.interview-prompt-chip {
+  padding: 0.45rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  font-family: var(--font-manrope), sans-serif;
+  color: rgba(0, 0, 0, 0.65);
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 9999px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  white-space: nowrap;
+}
+
+.interview-prompt-chip:hover:not(:disabled) {
+  background: #f8fafc;
+  border-color: rgba(37, 99, 235, 0.3);
+  color: #1d4ed8;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+}
+
+
+/* ======================
+   INPUT BAR
+   ====================== */
+
+.interview-input-bar {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.interview-input {
+  flex: 1;
+  height: 40px;
+  padding: 0 1rem;
+  font-size: 0.88rem;
+  font-family: var(--font-manrope), sans-serif;
+  color: #1a1a1a;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 9999px;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.interview-input::placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.interview-input:focus {
+  background: #fff;
+  border-color: rgba(37, 99, 235, 0.3);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.08);
+}
+
+.interview-input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.interview-send-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.3s ease,
+    opacity 0.2s ease;
+  box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);
+}
+
+.interview-send-btn:hover:not(:disabled) {
+  transform: scale(1.08);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.4);
+}
+
+.interview-send-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  transform: none;
+}
+
+
+/* ======================
+   ANIMATIONS
+   ====================== */
+
+@keyframes interview-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes interview-thinking-dot {
+  0%, 80%, 100% { transform: scale(1);   opacity: 0.25; }
+  40%           { transform: scale(1.5); opacity: 0.8;  }
+}
+
+@keyframes interview-shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes interview-pulse-dot {
+  0%, 100% { opacity: 1;   box-shadow: 0 0 6px rgba(34, 197, 94, 0.4); }
+  50%       { opacity: 0.6; box-shadow: 0 0 12px rgba(34, 197, 94, 0.6); }
+}
+
+
+/* ======================
+   REDUCED MOTION
+   ====================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .interview-cursor,
+  .interview-thinking span,
+  .interview-skeleton,
+  .interview-status-dot {
+    animation: none !important;
+  }
+}

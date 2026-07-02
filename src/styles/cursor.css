@@ -1,0 +1,50 @@
+/* =============================================================
+   CUSTOM CURSOR
+   ============================================================= */
+
+/* Hide the default cursor everywhere */
+body {
+  cursor: none;
+}
+
+/* Make sure hoverable elements also hide default cursor */
+a, button, input, textarea, select {
+  cursor: none !important;
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  mix-blend-mode: difference;
+  transition: opacity 0.3s ease;
+}
+
+/* Hide on smaller screens */
+@media (max-width: 768px) {
+  body, a, button, input, textarea, select {
+    cursor: auto !important;
+  }
+  .custom-cursor-dot, .custom-cursor-glow {
+    display: none;
+  }
+}

@@ -1,0 +1,479 @@
+/* =============================================================
+   HERO SECTION — Premium Visual Design System
+   
+   Design language: Apple · OpenAI · Anthropic · Stripe · Linear
+   Tone: Restrained, cinematic, confident
+   ============================================================= */
+
+
+/* ======================
+   SECTION CONTAINER
+   ====================== */
+
+.hero-section {
+  position: relative;
+  isolation: isolate;
+  background: #050507;
+}
+
+
+/* ======================
+   BACKGROUND LAYERS
+   ====================== */
+
+/* 1. Film-grain noise — barely visible, adds analog warmth */
+.hero-noise {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.028;
+  mix-blend-mode: screen;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* 2. Dot grid — extremely faint, gives spatial depth */
+.hero-dot-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.045) 1px,
+    transparent 1px
+  );
+  background-size: 40px 40px;
+  mask-image: radial-gradient(
+    ellipse 70% 65% at 65% 50%,
+    rgba(0, 0, 0, 0.5) 0%,
+    transparent 70%
+  );
+}
+
+/* 3. Global depth radial — very soft blue atmospheric depth */
+.hero-depth-radial {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse 70% 90% at 68% 48%,
+      rgba(37, 99, 195, 0.055) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 50% 60% at 15% 80%,
+      rgba(10, 20, 50, 0.08) 0%,
+      transparent 60%
+    );
+}
+
+/* 4. Portrait-aligned lighting halo — global behind the entire right column */
+.hero-portrait-lighting-halo {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 65%;
+  height: 120%;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    radial-gradient(
+      ellipse 60% 55% at 60% 40%,
+      rgba(37, 99, 235, 0.09) 0%,
+      transparent 65%
+    ),
+    radial-gradient(
+      ellipse 40% 50% at 75% 25%,
+      rgba(200, 160, 60, 0.055) 0%,
+      transparent 55%
+    );
+  filter: blur(2px);
+}
+
+
+/* ======================
+   NAME TYPOGRAPHY
+   ====================== */
+
+.hero-name-group {
+  /* Each name line sits tightly — optical rhythm not mathematical */
+  line-height: 1.0;
+}
+
+.hero-name-line-wrap {
+  /* Clips the GSAP y-translate reveal. Padding prevents clipping descenders */
+  overflow: hidden;
+  padding-bottom: 0.05em;
+  line-height: 1.06;
+}
+
+/* Shared responsive font size for Mohammed and Hussain */
+.hero-name-size {
+  font-size: clamp(2.8rem, 6.5vw, 5.25rem);
+  line-height: 1.03;
+  letter-spacing: -0.028em;
+}
+
+/* Abrar — optically slightly taller for the italic signature feel */
+.hero-name-size-abrar {
+  font-size: clamp(3rem, 6.9vw, 5.6rem);
+  line-height: 1.03;
+  letter-spacing: -0.01em; /* italics need less tracking */
+}
+
+.hero-name-abrar {
+  /* Richer gold — warm mid-tones anchored by deeper base stops */
+  background: linear-gradient(
+    118deg,
+    #9a6f28 0%,
+    #c9992e 18%,
+    #e8c45a 38%,
+    #f7e08a 52%,
+    #e0b040 68%,
+    #c08830 84%,
+    #9a6820 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Dual glow: tight warm halo + broad atmospheric warmth */
+  filter:
+    drop-shadow(0 0 18px rgba(220, 170, 60, 0.22))
+    drop-shadow(0 4px 48px rgba(190, 140, 35, 0.12));
+}
+
+
+/* ======================
+   PREMIUM BUTTONS
+   ====================== */
+
+.hero-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.72rem 1.65rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.018em;
+  border-radius: 9999px;
+  cursor: pointer;
+  overflow: hidden;
+  /* Each property gets its own carefully tuned duration + easing */
+  transition:
+    transform 0.5s cubic-bezier(0.34, 1.4, 0.64, 1),
+    box-shadow 0.45s cubic-bezier(0.33, 1, 0.68, 1),
+    color 0.32s ease,
+    border-color 0.32s ease,
+    background-color 0.32s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- Primary button: white resting → blue on hover --- */
+.hero-btn-primary {
+  background: rgba(255, 255, 255, 0.96);
+  color: #0b0b0f;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.4),
+    0 3px 16px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+/* Blue gradient fill — appears on hover */
+.hero-btn-primary::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(128deg, #1d4ed8 0%, #3b82f6 55%, #60a5fa 100%);
+  opacity: 0;
+  transition: opacity 0.38s cubic-bezier(0.33, 1, 0.68, 1);
+  z-index: 0;
+}
+
+/* Highlight shimmer sweep — travels left→right on hover */
+.hero-btn-primary::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.18) 50%,
+    transparent 80%
+  );
+  border-radius: inherit;
+  z-index: 2;
+  transition: left 0.55s cubic-bezier(0.33, 1, 0.68, 1);
+  pointer-events: none;
+}
+
+
+.hero-btn-primary:hover {
+  color: #ffffff;
+  border-color: rgba(96, 165, 250, 0.25);
+  transform: translateY(-3px);
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.35),
+    0 10px 32px rgba(29, 78, 216, 0.32),
+    0 0 0 1px rgba(59, 130, 246, 0.2),
+    0 0 60px rgba(59, 130, 246, 0.07);
+}
+
+.hero-btn-primary:hover::before {
+  opacity: 1;
+}
+
+.hero-btn-primary:hover::after {
+  left: 140%; /* sweep exits right */
+}
+
+.hero-btn-primary:active {
+  transform: translateY(-1px);
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.4),
+    0 4px 12px rgba(29, 78, 216, 0.2);
+}
+
+/* --- Secondary button: ghost → subtle glass on hover --- */
+.hero-btn-secondary {
+  background: rgba(255, 255, 255, 0.03);
+  color: rgba(255, 255, 255, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  backdrop-filter: blur(8px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.hero-btn-secondary:hover {
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  transform: translateY(-3px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.hero-btn-secondary:active {
+  transform: translateY(-1px);
+  transition-duration: 0.1s;
+}
+
+
+/* ======================
+   PORTRAIT — OUTER SHELL
+   ====================== */
+
+.hero-portrait-outer {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  /* 40–45% of hero width on large screens, controlled by grid column */
+  width: 100%;
+  max-width: 580px;
+  /* Taller than wide for full portrait cutout */
+  aspect-ratio: 5 / 6;
+  margin: 0 auto;
+}
+
+
+/* ======================
+   PORTRAIT — LIGHTING LAYERS
+   ====================== */
+
+/* All light elements are absolutely positioned within .hero-portrait-outer */
+.hp-glow-primary,
+.hp-glow-secondary,
+.hp-rim-gold,
+.hp-rim-blue,
+.hp-haze,
+.hp-edge-ring {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+/* Primary volumetric blue — main back-light, slightly softer */
+.hp-glow-primary {
+  width: 90%;
+  height: 80%;
+  bottom: 5%;
+  left: 5%;
+  background: radial-gradient(
+    ellipse 55% 65% at 50% 55%,
+    rgba(37, 99, 235, 0.17) 0%,
+    rgba(37, 99, 235, 0.07) 40%,
+    rgba(29, 78, 216, 0.03) 65%,
+    transparent 80%
+  );
+  filter: blur(62px);
+  z-index: 1;
+  animation: hp-pulse 8s ease-in-out infinite alternate;
+}
+
+/* Secondary blue fill — lower, broader */
+.hp-glow-secondary {
+  width: 110%;
+  height: 70%;
+  bottom: -5%;
+  left: -5%;
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(30, 64, 175, 0.12) 0%,
+    transparent 65%
+  );
+  filter: blur(70px);
+  z-index: 1;
+  animation: hp-pulse 9s ease-in-out infinite alternate-reverse;
+}
+
+/* Warm gold rim — upper-right, simulates key light, slightly tighter */
+.hp-rim-gold {
+  width: 60%;
+  height: 60%;
+  top: -2%;
+  right: -6%;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse 55% 50% at 55% 35%,
+    rgba(210, 165, 55, 0.16) 0%,
+    rgba(185, 135, 35, 0.07) 42%,
+    transparent 68%
+  );
+  filter: blur(44px);
+  z-index: 2;
+  animation: hp-rim-drift 11s ease-in-out infinite alternate;
+}
+
+/* Cool blue-white accent — lower-left, fill light */
+.hp-rim-blue {
+  width: 50%;
+  height: 55%;
+  bottom: 0%;
+  left: -10%;
+  background: radial-gradient(
+    ellipse at 60% 65%,
+    rgba(147, 197, 253, 0.07) 0%,
+    transparent 65%
+  );
+  filter: blur(35px);
+  z-index: 2;
+  animation: hp-rim-drift 13s ease-in-out infinite alternate-reverse;
+}
+
+/* Ambient haze — soft overall depth behind portrait */
+.hp-haze {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 40%;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(20, 40, 100, 0.08) 0%,
+    transparent 70%
+  );
+  filter: blur(30px);
+  z-index: 1;
+}
+
+/* Extremely subtle edge ring — single-pixel glow border */
+.hp-edge-ring {
+  width: 88%;
+  height: 88%;
+  bottom: 2%;
+  left: 6%;
+  border-radius: 40% 42% 38% 44% / 44% 42% 38% 40%;
+  border: 1px solid rgba(59, 130, 246, 0.06);
+  z-index: 3;
+  animation: hp-ring-morph 20s ease-in-out infinite alternate;
+  box-shadow:
+    0 0 30px rgba(59, 130, 246, 0.04),
+    inset 0 0 20px rgba(59, 130, 246, 0.02);
+}
+
+
+/* ======================
+   PORTRAIT IMAGE
+   ====================== */
+
+.hp-image-wrap {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  /* Float animation on the image only - faster for interactive feel */
+  animation: hp-float 4s ease-in-out infinite;
+}
+
+.hp-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: bottom;
+  display: block;
+  user-select: none;
+  pointer-events: none;
+  /* Depth shadow + subtle coloured rim that wraps from portrait itself */
+  filter:
+    drop-shadow(0 36px 55px rgba(0, 0, 0, 0.65))
+    drop-shadow(0 0 70px rgba(37, 99, 235, 0.10))
+    drop-shadow(0 -8px 36px rgba(210, 165, 55, 0.07));
+}
+
+
+/* ======================
+   ANIMATIONS
+   ====================== */
+
+@keyframes hp-pulse {
+  0%   { opacity: 0.75; transform: scale(1.00); }
+  100% { opacity: 1.00; transform: scale(1.06); }
+}
+
+@keyframes hp-rim-drift {
+  0%   { opacity: 0.7; transform: translate(0px, 0px); }
+  100% { opacity: 1.0; transform: translate(4px, -6px); }
+}
+
+@keyframes hp-ring-morph {
+  0%   { border-radius: 40% 42% 38% 44% / 44% 42% 38% 40%; opacity: 0.6; }
+  50%  { border-radius: 44% 38% 44% 36% / 38% 46% 40% 42%; opacity: 1.0; }
+  100% { border-radius: 38% 46% 36% 48% / 46% 38% 44% 38%; opacity: 0.7; }
+}
+
+@keyframes hp-float {
+  0%   { transform: translateY(0px) rotate(0deg); }
+  25%  { transform: translateY(-6px) rotate(-1deg); }
+  50%  { transform: translateY(2px) rotate(0.5deg); }
+  75%  { transform: translateY(-4px) rotate(-0.5deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+
+/* ======================
+   REDUCED MOTION
+   ====================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-glow-primary,
+  .hp-glow-secondary,
+  .hp-rim-gold,
+  .hp-rim-blue,
+  .hp-edge-ring,
+  .hp-image-wrap,
+  .hero-btn {
+    animation: none !important;
+    transition: none !important;
+  }
+}

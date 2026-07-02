@@ -1,0 +1,239 @@
+/* =============================================================
+   CONTACT SECTION - NEO-BRUTALIST TICKET
+   ============================================================= */
+
+.contact-section {
+  position: relative;
+  background-color: #000000; /* keep outer section black */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem;
+  overflow: hidden;
+  /* Funky background pattern */
+  background-image: 
+    linear-gradient(45deg, rgba(255, 230, 0, 0.03) 25%, transparent 25%, transparent 75%, rgba(255, 230, 0, 0.03) 75%, rgba(255, 230, 0, 0.03)),
+    linear-gradient(45deg, rgba(255, 230, 0, 0.03) 25%, transparent 25%, transparent 75%, rgba(255, 230, 0, 0.03) 75%, rgba(255, 230, 0, 0.03));
+  background-size: 60px 60px;
+  background-position: 0 0, 30px 30px;
+}
+
+.contact-container {
+  width: 100%;
+  max-width: 1200px;
+  perspective: 1500px; /* For 3D tilt */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── The Funky Ticket ──────────────────────────────────────── */
+
+.contact-ticket {
+  width: 100%;
+  background: #FFE600; /* Cyber Yellow */
+  border: 4px solid #000000;
+  border-radius: 24px;
+  box-shadow: 16px 16px 0px #000000;
+  overflow: hidden;
+}
+
+.contact-ticket-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 992px) {
+  .contact-ticket-inner {
+    grid-template-columns: 45% 55%;
+  }
+}
+
+/* ─── Left Side: Funky Header ───────────────────────────────── */
+
+.contact-funky-header {
+  padding: 4rem 3rem;
+  background: #000000;
+  color: #FFE600;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-bottom: 4px solid #000000;
+}
+
+@media (min-width: 992px) {
+  .contact-funky-header {
+    border-bottom: none;
+    border-right: 4px solid #000000;
+  }
+}
+
+.contact-funky-title {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(4rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  color: #FFE600;
+}
+
+.contact-funky-divider {
+  width: 100%;
+  height: 8px;
+  background: #FFE600;
+  margin-bottom: 2rem;
+}
+
+.contact-funky-sub {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 3rem;
+  line-height: 1.4;
+}
+
+.contact-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.funky-social-link {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #FFE600;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+.funky-social-link:hover {
+  transform: translateX(10px);
+  text-shadow: 4px 4px 0px rgba(255, 230, 0, 0.4);
+}
+
+/* ─── Right Side: Funky Form ────────────────────────────────── */
+
+.contact-funky-form-wrap {
+  padding: 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-funky-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.funky-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.funky-input-group label {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #000000;
+}
+
+.funky-input-group input,
+.funky-input-group textarea {
+  width: 100%;
+  background: #ffffff;
+  border: 4px solid #000000;
+  padding: 1rem 1.25rem;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #000000;
+  border-radius: 0;
+  box-shadow: 6px 6px 0px #000000;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+}
+
+.funky-input-group input::placeholder,
+.funky-input-group textarea::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.funky-input-group input:focus,
+.funky-input-group textarea:focus {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0px #000000;
+}
+
+/* The Submit Button */
+
+.funky-submit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  background: #000000;
+  color: #FFE600;
+  padding: 1.25rem 2rem;
+  border: 4px solid #000000;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.75rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 8px 8px 0px rgba(0,0,0,0.8);
+  margin-top: 1rem;
+}
+
+.funky-submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Success State */
+.contact-success-funky {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.contact-success-funky h3 {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 4rem;
+  font-weight: 900;
+  color: #000000;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.contact-success-funky p {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .contact-funky-header,
+  .contact-funky-form-wrap {
+    padding: 2.5rem 1.5rem;
+  }
+  .contact-funky-title {
+    font-size: 4rem;
+  }
+  .contact-ticket {
+    box-shadow: 8px 8px 0px #000000;
+  }
+}

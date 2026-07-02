@@ -1,0 +1,167 @@
+/* =============================================================
+   ENGINEERING STACK (Cinematic Marquee Redesign)
+   ============================================================= */
+
+.tech-section {
+  position: relative;
+  background-color: #000000; /* Pure cinematic black */
+  color: #ffffff;
+  /* We need a tall height so ScrollTrigger has room to scrub */
+  height: 350vh;
+}
+
+/* ─── Visual Transitions ────────────────────────────────────── */
+.tech-top-transition {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 20vh;
+  background: linear-gradient(180deg, #f5f3e9 0%, #000000 100%);
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* A soft, deep atmospheric glow in the center to create depth */
+.tech-cinematic-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+  height: 80vh;
+  background: radial-gradient(circle, rgba(255,255,255,0.02) 0%, transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ─── Sticky Container ──────────────────────────────────────── */
+.tech-sticky {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Hide the long panning rows */
+  z-index: 2;
+}
+
+/* ─── Header ────────────────────────────────────────────────── */
+.tech-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  z-index: 10;
+  /* GSAP will animate this */
+}
+
+.tech-label {
+  display: inline-block;
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 1rem;
+}
+
+.tech-title {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #ffffff;
+}
+
+/* ─── Marquee Rows ──────────────────────────────────────────── */
+.tech-rows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+  /* We make the container much wider than the screen so we can pan it */
+  padding-top: 1rem;
+}
+
+.tech-row {
+  display: flex;
+  gap: 1.5rem;
+  /* Ensure the row is long enough to not run out of cards during the 30% pan */
+  width: max-content;
+  will-change: transform;
+}
+
+/* ─── Compact Mini Tech Card ────────────────────────────────── */
+.tech-mini-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  background: rgba(25, 25, 25, 0.4); /* Very dark glass */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.tech-mini-glow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--accent);
+  opacity: 0.5;
+}
+
+.tech-mini-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.tech-mini-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+}
+
+.tech-mini-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0.85;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+}
+
+.tech-mini-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tech-mini-name {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.15rem;
+}
+
+.tech-mini-category {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+}

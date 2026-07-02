@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 720" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a2e"/>
+      <stop offset="100%" stop-color="#0a0a14"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1e40af" stop-opacity="0.1"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="300" cy="200" rx="100" ry="120" fill="url(#bg)" stroke="url(#accent)" stroke-width="1"/>
+  <path d="M160 720 L160 480 Q160 380 220 340 Q260 320 300 320 Q340 320 380 340 Q440 380 440 480 L440 720 Z" fill="url(#bg)" stroke="url(#accent)" stroke-width="1"/>
+  <circle cx="300" cy="360" r="300" fill="url(#glow)"/>
+  <text x="300" y="690" text-anchor="middle" fill="#555" font-family="sans-serif" font-size="14">Replace with portrait.png</text>
+</svg>

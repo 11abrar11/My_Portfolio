@@ -1,0 +1,235 @@
+/* =============================================================
+   TIMELINE SECTION
+   ============================================================= */
+
+.timeline-section {
+  position: relative;
+  background-color: #000000; /* Pure black for consistent page background */
+  color: #ffffff;
+  padding: 15vh 0;
+  overflow: hidden;
+}
+
+.timeline-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  /* Extra bottom padding for the breathability transition */
+  padding-bottom: 10vh;
+}
+
+/* --- SVG Animated Path --- */
+.timeline-svg-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px; /* Increased canvas width to 500px to fit the extreme curves */
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.timeline-path-base {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.05); /* Faint track */
+  stroke-width: 2;
+}
+
+.timeline-path-glow {
+  fill: none;
+  stroke: url(#timeline-gradient);
+  stroke-width: 3;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.6));
+  /* Will be animated via GSAP stroke-dashoffset */
+}
+
+/* --- Glowing Node --- */
+.timeline-node {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 
+    0 0 20px 4px rgba(56, 189, 248, 0.8),
+    0 0 40px 10px rgba(56, 189, 248, 0.4);
+  z-index: 10;
+  opacity: 0; /* Hidden until scroll starts */
+}
+
+/* --- Layout Grid --- */
+.timeline-row {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding: 3rem 0;
+  z-index: 1;
+}
+
+.timeline-row:nth-child(odd) {
+  justify-content: flex-start;
+}
+
+/* --- Timeline Card --- */
+.timeline-card-wrap {
+  width: 45%;
+  /* Card starts slightly offset and scaled down for elegant GSAP reveal */
+  opacity: 0;
+  transform: translateY(20px) scale(0.98);
+}
+
+.timeline-row:nth-child(odd) .timeline-card-wrap {
+  padding-right: 3rem;
+  /* GSAP will animate x from -30px */
+}
+
+.timeline-row:nth-child(even) .timeline-card-wrap {
+  padding-left: 3rem;
+  /* GSAP will animate x from 30px */
+}
+
+.timeline-card {
+  position: relative;
+  background-color: #121214; /* Deep charcoal */
+  border-radius: 16px;
+  padding: 2.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05); /* Soft inner top border */
+  transition: border-color 0.4s ease;
+  overflow: hidden;
+}
+
+/* Slight blue edge lighting on the left/right depending on side */
+.timeline-row:nth-child(odd) .timeline-card {
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    inset -1px 0 10px rgba(56, 189, 248, 0.03), /* Blue edge facing timeline */
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.timeline-row:nth-child(even) .timeline-card {
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.5),
+    inset 1px 0 10px rgba(56, 189, 248, 0.03), /* Blue edge facing timeline */
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+
+/* Emphasize the final AI projects slightly */
+.timeline-card.major-project {
+  background-color: #16161a;
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  padding: 2.75rem; /* Slightly larger */
+}
+
+
+/* --- Card Inner Content --- */
+.timeline-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.timeline-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: #1e1e24; /* Slightly lighter charcoal */
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* Active state triggered by GSAP */
+.timeline-card-icon.active {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.3);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.15);
+}
+
+.timeline-year {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #38bdf8; /* Blue accent */
+}
+
+.timeline-title {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.major-project .timeline-title {
+  font-size: 1.6rem;
+}
+
+.timeline-org {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.25rem;
+}
+
+.timeline-metrics {
+  font-family: var(--font-space-grotesk), sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1rem;
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background-color: rgba(255, 255, 255, 0.03);
+  border-radius: 4px;
+}
+
+.timeline-desc {
+  font-family: var(--font-manrope), sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+  /* On mobile, align everything to the left */
+  .timeline-svg-container {
+    left: 20px;
+    transform: none;
+  }
+  
+  .timeline-node {
+    left: 20px;
+  }
+  
+  .timeline-row,
+  .timeline-row:nth-child(odd) {
+    justify-content: flex-end;
+  }
+  
+  .timeline-card-wrap {
+    width: calc(100% - 50px);
+  }
+  
+  .timeline-row:nth-child(odd) .timeline-card-wrap,
+  .timeline-row:nth-child(even) .timeline-card-wrap {
+    padding-left: 1.5rem;
+    padding-right: 0;
+  }
+}
