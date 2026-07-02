@@ -21,8 +21,22 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Mohammed Abrar Hussain | AI Engineer",
-  description: "Premium 3D Interactive AI Engineer Portfolio",
+  title: "Mohammed Abrar Hussain | AI Engineer & Developer",
+  description: "Portfolio of Mohammed Abrar Hussain, building production-ready AI systems, automated workflows, and full-stack applications.",
+  keywords: ["AI Engineer", "Software Developer", "Full Stack", "Next.js", "Mohammed Abrar Hussain", "11abrar11", "Machine Learning", "Portfolio"],
+  authors: [{ name: "Mohammed Abrar Hussain" }],
+  openGraph: {
+    title: "Mohammed Abrar Hussain | AI Engineer",
+    description: "Premium 3D Interactive AI Engineer Portfolio",
+    type: "website",
+    url: "https://yourwebsite.com", 
+    siteName: "Mohammed Abrar Hussain Portfolio",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mohammed Abrar Hussain | AI Engineer",
+    description: "Premium 3D Interactive AI Engineer Portfolio",
+  },
 };
 
 export default function RootLayout({
