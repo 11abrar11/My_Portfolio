@@ -208,28 +208,40 @@
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
-  /* On mobile, align everything to the left */
+  /* User requested the timeline curve to be centered on mobile too */
   .timeline-svg-container {
-    left: 20px;
-    transform: none;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
   .timeline-node {
-    left: 20px;
+    left: 50%;
+    transform: translateX(-50%);
   }
   
-  .timeline-row,
-  .timeline-row:nth-child(odd) {
-    justify-content: flex-end;
-  }
-  
+  /* Make the cards take up maximum possible space on each side */
   .timeline-card-wrap {
-    width: calc(100% - 50px);
+    width: 48%;
   }
   
-  .timeline-row:nth-child(odd) .timeline-card-wrap,
+  .timeline-row:nth-child(odd) .timeline-card-wrap {
+    padding-right: 1rem;
+  }
+  
   .timeline-row:nth-child(even) .timeline-card-wrap {
-    padding-left: 1.5rem;
-    padding-right: 0;
+    padding-left: 1rem;
+  }
+
+  /* Make padding tighter so cards fit */
+  .timeline-card {
+    padding: 1.25rem;
+  }
+  
+  .timeline-title {
+    font-size: 1.1rem;
+  }
+  
+  .major-project .timeline-title {
+    font-size: 1.25rem;
   }
 }

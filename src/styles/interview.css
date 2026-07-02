@@ -22,7 +22,8 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+  padding: 4.5rem 1rem 1rem 1rem; /* Adjust padding for mobile (4.5rem top to clear navbar) */
 }
 
 @media (min-width: 1024px) {
@@ -31,6 +32,7 @@
     grid-template-columns: 32% 1fr;
     gap: 5rem;
     align-items: center; /* Vertically center the header against the chat */
+    padding: 5rem 2rem 4rem 2rem; /* Desktop padding */
   }
 }
 
@@ -45,7 +47,7 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start; /* Align top */
-  padding-top: 1rem; /* optical alignment with chat top */
+  padding-top: 0; 
 }
 
 @media (min-width: 1024px) {
@@ -67,13 +69,13 @@
 }
 
 .interview-heading {
-  font-size: clamp(2.5rem, 6vw, 4rem); /* Slightly larger */
+  font-size: clamp(1.8rem, 5vw, 4rem); /* Much smaller minimum for mobile */
   font-weight: 700;
   line-height: 1.05;
   letter-spacing: -0.04em;
   color: #0c0c0f;
   font-family: var(--font-space-grotesk), sans-serif;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.75rem;
 }
 
 .interview-heading-accent {
@@ -85,10 +87,10 @@
 }
 
 .interview-subheading {
-  font-size: 1.05rem;
+  font-size: 0.9rem; /* Smaller for mobile */
   color: rgba(0, 0, 0, 0.5);
-  line-height: 1.75; /* Increased line-height */
-  max-width: 420px; /* Reduced width */
+  line-height: 1.5; 
+  max-width: 420px; 
   margin: 0 auto;
   font-family: var(--font-manrope), sans-serif;
 }
@@ -96,6 +98,8 @@
 @media (min-width: 1024px) {
   .interview-subheading {
     margin: 0; /* Reset auto margin for left alignment */
+    font-size: 1.05rem;
+    line-height: 1.75;
   }
 }
 
@@ -106,14 +110,14 @@
 
 .interview-chat-window {
   flex: 1;
-  min-height: 0;
+  min-height: 50vh; /* Force a huge minimum height on mobile so it's always usable */
   height: 100%;
   max-height: 85vh;
   display: flex;
   flex-direction: column;
   background: #ffffff;
   border: 1px solid rgba(0, 0, 0, 0.04);
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
   box-shadow:
     0 4px 24px rgba(0, 0, 0, 0.03),

@@ -226,7 +226,7 @@ export function AIInterview() {
       <div
         ref={innerRef}
         className="interview-inner"
-        style={{ position: "sticky", top: 0, height: "100vh", paddingTop: "5rem", paddingBottom: "4rem" }}
+        style={{ position: "sticky", top: 0, height: "100vh" }}
       >
         {/* Left Side Header */}
         <div
