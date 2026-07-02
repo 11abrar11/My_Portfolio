@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     title: "Mohammed Abrar Hussain | AI Engineer",
     description: "Premium 3D Interactive AI Engineer Portfolio",
     type: "website",
-    url: "https://yourwebsite.com", 
+    url: "https://www.mohammedabrarhussain.com", 
     siteName: "Mohammed Abrar Hussain Portfolio",
   },
   twitter: {

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: '/private/',
     },
-    sitemap: 'https://yourwebsite.com/sitemap.xml',
+    sitemap: 'https://www.mohammedabrarhussain.com/sitemap.xml',
   }
 }
