@@ -18,10 +18,11 @@ export function TechStack() {
   const row3Ref = useRef<HTMLDivElement>(null);
   const rowsContainerRef = useRef<HTMLDivElement>(null);
 
-  // Split the 18 items into 3 rows of 6
-  const row1Data = TECH_STACK.slice(0, 6);
-  const row2Data = TECH_STACK.slice(6, 12);
-  const row3Data = TECH_STACK.slice(12, 18);
+  // Split the items into 3 roughly equal rows
+  const itemsPerRow = Math.ceil(TECH_STACK.length / 3);
+  const row1Data = TECH_STACK.slice(0, itemsPerRow);
+  const row2Data = TECH_STACK.slice(itemsPerRow, itemsPerRow * 2);
+  const row3Data = TECH_STACK.slice(itemsPerRow * 2, TECH_STACK.length);
 
   // Duplicate items to ensure we don't run out of content while scrubbing
   const repeatedRow1 = [...row1Data, ...row1Data, ...row1Data];
