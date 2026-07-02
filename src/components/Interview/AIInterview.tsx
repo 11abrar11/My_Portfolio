@@ -105,9 +105,7 @@ export function AIInterview() {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top top", // when the section hits the top of viewport
-        end: "bottom bottom", // animation completes exactly as section unsticks
-        scrub: 1,         // smooth scrubbing
+        start: "top 60%", // start animation when section is 60% down the screen
         onEnter: () => {
           // Trigger the fake loading sequence when we hit the section
           if (!sectionLoaded) {
