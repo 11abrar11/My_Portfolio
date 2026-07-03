@@ -32,10 +32,10 @@ export function ProjectStack() {
 
       // 1. Initial State Setup
       cards.forEach((card, i) => {
-        // All cards start below the viewport.
+        // Card 0 starts visible, others start below the viewport.
         // z-index ensures Card 2 is on top of Card 1, etc.
         gsap.set(card, {
-          y: vh + 100, // Fully off-screen below
+          y: i === 0 ? 0 : vh + 100, // Card 0 is visible at y:0
           scale: 1,
           transformOrigin: "top center",
           zIndex: i,
@@ -44,38 +44,12 @@ export function ProjectStack() {
 
       const master = gsap.timeline({ paused: true });
 
-      // Phase 1: Intro sequence (0 to 0.12 on timeline)
-      // Fast entrance for Card 0 so the user doesn't have to scroll much
-      
-      // Header fades in
-      master.to(
-        headerRef.current,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.08,
-          ease: "power2.out",
-        },
-        0
-      );
-
-      // Card 0 rises quickly
-      master.to(
-        cards[0],
-        {
-          y: 0,
-          duration: 0.12,
-          ease: "power3.out",
-        },
-        0.02
-      );
-
-      // Phase 2: Sequential card stacking on scroll (0.2 to 1.0)
+      // Phase 2: Sequential card stacking on scroll
       const numSwaps = cards.length - 1;
-      const budgetPerSwap = 0.8 / numSwaps; // Space left after intro
+      const budgetPerSwap = 1.0 / numSwaps; // Use full duration
 
       for (let i = 1; i <= numSwaps; i++) {
-        const swapStart = 0.2 + (i - 1) * budgetPerSwap;
+        const swapStart = (i - 1) * budgetPerSwap;
         
         // The new card rises from below to become active
         master.to(
@@ -131,7 +105,6 @@ export function ProjectStack() {
         <div
           ref={headerRef}
           className="projects-header"
-          style={{ opacity: 0, transform: "translateY(28px)" }}
         >
           <span className="projects-label">Selected Work</span>
           <h2 className="projects-title">Selected Engineering Work</h2>

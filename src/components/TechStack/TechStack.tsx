@@ -33,10 +33,6 @@ export function TechStack() {
     () => {
       if (!containerRef.current || !stickyRef.current || !headerRef.current) return;
 
-      // 1. Initial State
-      gsap.set(headerRef.current, { opacity: 0, y: 20 });
-      gsap.set(rowsContainerRef.current, { opacity: 0 });
-      
       // We want Row 1 and 3 to start shifted left so they can pan right.
       // We want Row 2 to start at 0 so it can pan left.
       gsap.set(row1Ref.current, { x: "-30%" });
@@ -54,22 +50,7 @@ export function TechStack() {
         }
       });
 
-      // Part 1: Fade in header (0 to 15% of scroll)
-      tl.to(headerRef.current, {
-        opacity: 1,
-        y: 0,
-        duration: 0.15,
-        ease: "power2.out"
-      }, 0);
-
-      // Part 2: Fade in the rows right after header appears (15% to 25%)
-      tl.to(rowsContainerRef.current, {
-        opacity: 1,
-        duration: 0.1,
-        ease: "power2.inOut"
-      }, 0.15);
-
-      // Part 3: The continuous panning (runs the entire scroll duration)
+      // The continuous panning (runs the entire scroll duration)
       // Row 1 goes RIGHT (moves from -30% towards 0%)
       tl.to(row1Ref.current, {
         x: "0%",
