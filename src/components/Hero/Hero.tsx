@@ -165,7 +165,7 @@ export function Hero() {
             {/* Tagline — narrower column for comfortable reading measure */}
             <p
               ref={taglineRef}
-              className="text-[14.5px] sm:text-[15px] md:text-base text-white/38 max-w-[320px] leading-[1.75] font-sans tracking-[0.008em]"
+              className="text-[14.5px] sm:text-[15px] md:text-base text-sky-100 drop-shadow-[0_0_12px_rgba(14,165,233,0.5)] max-w-[320px] leading-[1.75] font-sans tracking-[0.008em]"
             >
               Building production-ready AI systems that automate
               businesses and solve real-world problems.
