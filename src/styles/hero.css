@@ -122,9 +122,9 @@
 
 /* Abrar — optically slightly taller for the italic signature feel */
 .hero-name-size-abrar {
-  font-size: clamp(3rem, 6.9vw, 5.6rem);
-  line-height: 1.03;
-  letter-spacing: -0.01em; /* italics need less tracking */
+  font-size: clamp(4.5rem, 9.5vw, 7.8rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em; 
 }
 
 .hero-name-abrar {
@@ -144,8 +144,8 @@
   -webkit-text-fill-color: transparent;
   /* Dual glow: tight warm halo + broad atmospheric warmth */
   filter:
-    drop-shadow(0 0 18px rgba(220, 170, 60, 0.22))
-    drop-shadow(0 4px 48px rgba(190, 140, 35, 0.12));
+    drop-shadow(0 0 22px rgba(250, 204, 21, 0.65))
+    drop-shadow(0 4px 40px rgba(234, 179, 8, 0.45));
 }
 
 
