@@ -145,7 +145,7 @@ export function Hero() {
               <span className="hero-name-line-wrap block overflow-hidden">
                 <span
                   ref={(el) => { nameLineRefs.current[1] = el; }}
-                  className="block font-serif italic hero-name-abrar hero-name-size-abrar"
+                  className="block font-signature hero-name-abrar hero-name-size-abrar"
                 >
                   Abrar
                 </span>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Manrope, Cormorant_Garamond } from "next/font/google";
+import { Space_Grotesk, Manrope, Cormorant_Garamond, Great_Vibes } from "next/font/google";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import "./globals.css";
 
@@ -18,6 +18,12 @@ const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
+});
+
+const greatVibes = Great_Vibes({
+  variable: "--font-great-vibes",
+  weight: "400",
+  subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
@@ -48,7 +54,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${spaceGrotesk.variable} ${manrope.variable} ${cormorant.variable} h-full antialiased dark`}
+      className={`${spaceGrotesk.variable} ${manrope.variable} ${cormorant.variable} ${greatVibes.variable} h-full antialiased dark`}
     >
       <body className="min-h-full flex flex-col font-sans selection:bg-blue-500/30">
         <SmoothScroll>{children}</SmoothScroll>
