@@ -21,10 +21,14 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.mohammedabrarhussain.com"),
   title: "Mohammed Abrar Hussain | AI Engineer & Developer",
   description: "Portfolio of Mohammed Abrar Hussain, building production-ready AI systems, automated workflows, and full-stack applications.",
   keywords: ["AI Engineer", "Software Developer", "Full Stack", "Next.js", "Mohammed Abrar Hussain", "11abrar11", "Machine Learning", "Portfolio"],
   authors: [{ name: "Mohammed Abrar Hussain" }],
+  verification: {
+    google: "AExzFTljUMspL_bBffE0g4EY_TyiBIUkUOfGwaK_m5k",
+  },
   openGraph: {
     title: "Mohammed Abrar Hussain | AI Engineer",
     description: "Premium 3D Interactive AI Engineer Portfolio",
