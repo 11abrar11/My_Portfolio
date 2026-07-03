@@ -67,12 +67,12 @@ export function Hero() {
         {
           opacity: 0,
           y: 70,
-          clipPath: "inset(110% 0 0 0)",
+          clipPath: "inset(100% -50% -50% -50%)",
         },
         {
           opacity: 1,
           y: 0,
-          clipPath: "inset(0% 0 0 0)",
+          clipPath: "inset(-50% -50% -50% -50%)",
           duration: 0.9,
           stagger: 0.18,
           ease: "power4.out",
@@ -132,7 +132,7 @@ export function Hero() {
             {/* Name composition */}
             <h1 className="hero-name-group leading-none space-y-1">
               {/* Mohammed */}
-              <span className="hero-name-line-wrap block overflow-hidden">
+              <span className="hero-name-line-wrap block relative z-10">
                 <span
                   ref={(el) => { nameLineRefs.current[0] = el; }}
                   className="block font-heading font-bold tracking-tight text-white/95 hero-name-size"
@@ -141,8 +141,8 @@ export function Hero() {
                 </span>
               </span>
 
-              {/* Abrar — elegant gold italic */}
-              <span className="hero-name-line-wrap block overflow-hidden">
+              {/* Abrar — elegant gold signature */}
+              <span className="hero-name-line-wrap block relative z-20">
                 <span
                   ref={(el) => { nameLineRefs.current[1] = el; }}
                   className="block font-signature hero-name-abrar hero-name-size-abrar"
@@ -152,7 +152,7 @@ export function Hero() {
               </span>
 
               {/* Hussain */}
-              <span className="hero-name-line-wrap block overflow-hidden">
+              <span className="hero-name-line-wrap block relative z-10">
                 <span
                   ref={(el) => { nameLineRefs.current[2] = el; }}
                   className="block font-heading font-bold tracking-tight text-white/95 hero-name-size"
