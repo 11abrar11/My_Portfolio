@@ -107,8 +107,8 @@
 }
 
 .hero-name-line-wrap {
-  /* Clips the GSAP y-translate reveal. Padding prevents clipping descenders */
-  overflow: hidden;
+  /* Padding prevents clipping descenders */
+  overflow: visible;
   padding-bottom: 0.05em;
   line-height: 1.06;
 }
