@@ -2,11 +2,13 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useLenis } from "lenis/react";
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,7 +45,11 @@ export function Navbar() {
     e.preventDefault();
     const target = document.getElementById(targetId);
     if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
+      if (lenis) {
+        lenis.scrollTo(target);
+      } else {
+        target.scrollIntoView({ behavior: "smooth" });
+      }
       setMenuOpen(false); // Close menu when a link is clicked
     }
   };
@@ -76,7 +82,7 @@ export function Navbar() {
           <a href="#interview" onClick={(e) => handleScrollTo(e, "interview")} className={`navbar-link ${activeSection === "interview" ? "active" : ""}`}>Interview</a>
           <a href="#projects" onClick={(e) => handleScrollTo(e, "projects")} className={`navbar-link ${activeSection === "projects" ? "active" : ""}`}>Projects</a>
           <a href="#tech-stack" onClick={(e) => handleScrollTo(e, "tech-stack")} className={`navbar-link ${activeSection === "tech-stack" ? "active" : ""}`}>Tech</a>
-          <a href="#timeline" onClick={(e) => handleScrollTo(e, "timeline")} className={`navbar-link ${activeSection === "timeline" ? "active" : ""}`}>Experience</a>
+          <a href="#timeline" onClick={(e) => handleScrollTo(e, "timeline")} className={`navbar-link ${activeSection === "timeline" ? "active" : ""}`}>My Journey</a>
           <a href="#contact" onClick={(e) => handleScrollTo(e, "contact")} className={`navbar-link ${activeSection === "contact" ? "active" : ""}`}>Contact</a>
         </div>
       </div>
