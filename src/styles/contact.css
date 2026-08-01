@@ -1,20 +1,20 @@
 /* =============================================================
-   CONTACT SECTION - NEO-BRUTALIST TICKET
+   CONTACT SECTION - CINEMATIC CYBER CARD
    ============================================================= */
 
 .contact-section {
   position: relative;
-  background-color: #000000; /* keep outer section black */
+  background-color: #000000;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 6rem 1.5rem;
   overflow: hidden;
-  /* Funky background pattern */
+  /* Ambient subtle grid */
   background-image: 
-    linear-gradient(45deg, rgba(255, 230, 0, 0.03) 25%, transparent 25%, transparent 75%, rgba(255, 230, 0, 0.03) 75%, rgba(255, 230, 0, 0.03)),
-    linear-gradient(45deg, rgba(255, 230, 0, 0.03) 25%, transparent 25%, transparent 75%, rgba(255, 230, 0, 0.03) 75%, rgba(255, 230, 0, 0.03));
+    linear-gradient(45deg, rgba(255, 255, 255, 0.015) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.015) 75%, rgba(255, 255, 255, 0.015)),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.015) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.015) 75%, rgba(255, 255, 255, 0.015));
   background-size: 60px 60px;
   background-position: 0 0, 30px 30px;
 }
@@ -22,21 +22,32 @@
 .contact-container {
   width: 100%;
   max-width: 1200px;
-  perspective: 1500px; /* For 3D tilt */
+  perspective: 1500px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* ─── The Funky Ticket ──────────────────────────────────────── */
+/* ─── The Cinematic Card ──────────────────────────────────────── */
 
 .contact-ticket {
   width: 100%;
-  background: #FFE600; /* Cyber Yellow */
-  border: 4px solid #000000;
+  background: #121214; /* Deep charcoal matching timeline */
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 24px;
-  box-shadow: 16px 16px 0px #000000;
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   overflow: hidden;
+  position: relative;
+}
+
+.contact-ticket::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.5), transparent);
+  opacity: 0.5;
 }
 
 .contact-ticket-inner {
@@ -50,75 +61,79 @@
   }
 }
 
-/* ─── Left Side: Funky Header ───────────────────────────────── */
+/* ─── Left Side: Header ───────────────────────────────── */
 
 .contact-funky-header {
   padding: 4rem 3rem;
-  background: #000000;
-  color: #FFE600;
+  background: #0a0a0c; /* Even darker for contrast */
+  color: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  border-bottom: 4px solid #000000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 @media (min-width: 992px) {
   .contact-funky-header {
     border-bottom: none;
-    border-right: 4px solid #000000;
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
   }
 }
 
 .contact-funky-title {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: clamp(4rem, 8vw, 7rem);
-  font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.05em;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
   margin-bottom: 2rem;
   text-transform: uppercase;
-  color: #FFE600;
+  color: #ffffff;
 }
 
 .contact-funky-divider {
-  width: 100%;
-  height: 8px;
-  background: #FFE600;
+  width: 60px;
+  height: 4px;
+  background: #38bdf8; /* Cyan accent */
   margin-bottom: 2rem;
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
 }
 
 .contact-funky-sub {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
   margin-bottom: 3rem;
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
 .contact-socials {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.25rem;
 }
 
 .funky-social-link {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 1.5rem;
-  font-weight: 900;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: #FFE600;
+  color: #38bdf8;
   text-decoration: none;
   display: inline-block;
-  transition: transform 0.2s ease, text-shadow 0.2s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .funky-social-link:hover {
-  transform: translateX(10px);
-  text-shadow: 4px 4px 0px rgba(255, 230, 0, 0.4);
+  transform: translateX(8px);
+  color: #ffffff;
+  text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
 }
 
-/* ─── Right Side: Funky Form ────────────────────────────────── */
+/* ─── Right Side: Form ────────────────────────────────── */
 
 .contact-funky-form-wrap {
   padding: 4rem 3rem;
@@ -130,7 +145,7 @@
 .contact-funky-form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .funky-input-group {
@@ -141,36 +156,37 @@
 
 .funky-input-group label {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 1.25rem;
-  font-weight: 900;
-  color: #000000;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
 }
 
 .funky-input-group input,
 .funky-input-group textarea {
   width: 100%;
-  background: #ffffff;
-  border: 4px solid #000000;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   padding: 1rem 1.25rem;
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #000000;
-  border-radius: 0;
-  box-shadow: 6px 6px 0px #000000;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-size: 1rem;
+  color: #ffffff;
+  border-radius: 8px;
+  transition: all 0.3s ease;
   outline: none;
 }
 
 .funky-input-group input::placeholder,
 .funky-input-group textarea::placeholder {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.2);
 }
 
 .funky-input-group input:focus,
 .funky-input-group textarea:focus {
-  transform: translate(-4px, -4px);
-  box-shadow: 10px 10px 0px #000000;
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(56, 189, 248, 0.5);
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
 }
 
 /* The Submit Button */
@@ -180,17 +196,24 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background: #000000;
-  color: #FFE600;
-  padding: 1.25rem 2rem;
-  border: 4px solid #000000;
+  background: #38bdf8;
+  color: #000000;
+  padding: 1.1rem 2rem;
+  border: none;
+  border-radius: 8px;
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 1.75rem;
-  font-weight: 900;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow: 8px 8px 0px rgba(0,0,0,0.8);
   margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.funky-submit-btn:hover {
+  background: #7dd3fc;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
 }
 
 .funky-submit-btn:disabled {
@@ -210,18 +233,16 @@
 
 .contact-success-funky h3 {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 4rem;
-  font-weight: 900;
-  color: #000000;
-  line-height: 1;
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
   margin-bottom: 1rem;
 }
 
 .contact-success-funky p {
   font-family: var(--font-space-grotesk), sans-serif;
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: rgba(0, 0, 0, 0.8);
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 /* Responsive tweaks */
@@ -231,9 +252,6 @@
     padding: 2.5rem 1.5rem;
   }
   .contact-funky-title {
-    font-size: 4rem;
-  }
-  .contact-ticket {
-    box-shadow: 8px 8px 0px #000000;
+    font-size: 3.5rem;
   }
 }

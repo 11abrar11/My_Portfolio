@@ -90,7 +90,7 @@ export function Contact() {
                   animate={{ opacity: 1, scale: 1 }}
                   className="contact-success-funky"
                 >
-                  <CheckCircle2 size={80} strokeWidth={3} className="text-black mb-4" />
+                  <CheckCircle2 size={80} strokeWidth={3} className="text-[#38bdf8] mb-4 drop-shadow-[0_0_12px_rgba(56,189,248,0.5)]" />
                   <h3>BOOM!</h3>
                   <p>Message sent. Talk soon.</p>
                 </motion.div>
@@ -113,7 +113,7 @@ export function Contact() {
 
                   <motion.button 
                     whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95, y: 4, boxShadow: "0px 0px 0px rgba(0,0,0,1)" }}
+                    whileTap={{ scale: 0.95, y: 2, boxShadow: "0px 0px 0px rgba(56,189,248,0)" }}
                     type="submit" 
                     disabled={isSubmitting} 
                     className="funky-submit-btn"
