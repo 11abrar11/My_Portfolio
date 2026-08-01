@@ -76,9 +76,9 @@ export function Contact() {
               </p>
 
               <div className="contact-socials">
-                <a href="mailto:hello@example.com" className="funky-social-link">Email</a>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="funky-social-link">LinkedIn</a>
-                <a href="https://github.com" target="_blank" rel="noreferrer" className="funky-social-link">GitHub</a>
+                <a href="mailto:11abrarhussain11@gmail.com" className="funky-social-link">Email</a>
+                <a href="https://www.linkedin.com/in/mohammed-abrar-hussain-45550832a" target="_blank" rel="noreferrer" className="funky-social-link">LinkedIn</a>
+                <a href="https://github.com/11abrar11" target="_blank" rel="noreferrer" className="funky-social-link">GitHub</a>
               </div>
             </div>
 
