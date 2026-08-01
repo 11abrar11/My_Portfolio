@@ -173,10 +173,10 @@ export function Hero() {
 
             {/* CTAs */}
             <div ref={buttonsRef} className="flex flex-wrap items-center gap-3 pt-1">
-              <button className="hero-btn hero-btn-primary group">
+              <a href="#projects" className="hero-btn hero-btn-primary group flex items-center justify-center decoration-transparent">
                 <span className="relative z-10">Explore Projects</span>
                 <ArrowRight className="relative z-10 ml-2 h-[15px] w-[15px] transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-x-[5px]" />
-              </button>
+              </a>
               <a href="/Mohammed_Abrar_Hussain_Resume.pdf" target="_blank" rel="noreferrer" className="hero-btn hero-btn-secondary group flex items-center justify-center decoration-transparent">
                 <span className="relative z-10">Download Resume</span>
                 <Download className="relative z-10 ml-2 h-[15px] w-[15px] transition-transform duration-500 ease-[cubic-bezier(0.33,1,0.68,1)] group-hover:translate-y-[2px]" />
