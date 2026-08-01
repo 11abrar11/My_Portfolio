@@ -123,7 +123,7 @@ export function Hero() {
       <div ref={lightingRef} className="hero-portrait-lighting-halo" />
 
       {/* Main layout */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 h-full min-h-screen flex items-center">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16 xl:px-20 pt-24 lg:pt-0 h-full min-h-screen flex items-center">
         <div className="w-full grid grid-cols-1 lg:grid-cols-[1fr_55%] gap-12 lg:gap-8 items-center">
 
           {/* Left column: Typography */}

@@ -214,27 +214,29 @@
     transform: translateX(-50%);
   }
   
-  .timeline-node {
-    left: 50%;
-    transform: translateX(-50%);
+  /* Removed conflicting .timeline-node CSS so GSAP can position it correctly */
+  
+  /* Make cards 100% width and centered so the curve passes beautifully behind them */
+  .timeline-row {
+    justify-content: center;
   }
   
-  /* Make the cards take up maximum possible space on each side */
   .timeline-card-wrap {
-    width: 48%;
+    width: 100%;
   }
   
-  .timeline-row:nth-child(odd) .timeline-card-wrap {
-    padding-right: 1rem;
-  }
-  
+  .timeline-row:nth-child(odd) .timeline-card-wrap,
   .timeline-row:nth-child(even) .timeline-card-wrap {
-    padding-left: 1rem;
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  /* Make padding tighter so cards fit */
+  /* Make the cards frosted glass so the centered curve shines through from behind */
   .timeline-card {
-    padding: 1.25rem;
+    padding: 1.5rem;
+    background-color: rgba(18, 18, 20, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
   }
   
   .timeline-title {
