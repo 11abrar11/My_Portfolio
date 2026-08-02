@@ -49,6 +49,10 @@ export function Contact() {
     
     // Web3Forms access key provided by the user
     formData.append("access_key", "319478de-0a84-458c-b4f5-b74eccae60dd");
+    
+    // Customizing the email headers so you know it came from the Portfolio
+    formData.append("subject", "New Submission from Portfolio Website");
+    formData.append("from_name", "Portfolio Website");
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
