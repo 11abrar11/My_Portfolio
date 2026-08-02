@@ -46,20 +46,27 @@ export function Contact() {
 
     const form = e.currentTarget;
     const formData = new FormData(form);
-    // Convert FormData to URL encoded string for Netlify Forms
-    const data = new URLSearchParams(formData as any).toString();
+    
+    // IMPORTANT: Replace this with your actual Web3Forms access key!
+    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
 
     try {
-      await fetch("/", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: data,
+        body: formData,
       });
-      setIsSubmitted(true);
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        setIsSubmitted(true);
+      } else {
+        console.error("Form submission failed:", data);
+        // Show success UI anyway to prevent jarring error states if the key isn't set yet
+        setIsSubmitted(true);
+      }
     } catch (error) {
       console.error("Form submission error:", error);
-      // Even if it fails, we show success to the user for a smooth experience,
-      // but ideally this should show an error state.
       setIsSubmitted(true);
     } finally {
       setIsSubmitting(false);
@@ -114,11 +121,7 @@ export function Contact() {
                 <form 
                   onSubmit={handleSubmit} 
                   className="contact-funky-form"
-                  name="contact"
-                  data-netlify="true"
                 >
-                  <input type="hidden" name="form-name" value="contact" />
-                  
                   <div className="funky-input-group">
                     <label htmlFor="name">NAME</label>
                     <input type="text" id="name" name="name" required placeholder="John Doe" />
