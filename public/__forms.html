@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Netlify Forms Definitions</title>
+  </head>
+  <body>
+    <!-- 
+      This file exists solely so Netlify's build bots can parse the form structure at build time. 
+      Next.js App Router dynamically renders pages, hiding the data-netlify="true" attribute from the bots.
+    -->
+    <form name="contact" data-netlify="true" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <textarea name="message"></textarea>
+    </form>
+  </body>
+</html>
